@@ -32,6 +32,12 @@
         transition: filter 0.3s ease-in-out;
         pointer-events: none;
     }
+
+    #interests p {
+        color: white;
+        text-shadow: 0 0 5px green, 0 0 10px green;
+    }
+
 </style>
  
 
@@ -87,15 +93,20 @@
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab">
-                <i class="bi bi-envelope"></i> Contact
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
             <button class="nav-link" id="certificates-tab" data-bs-toggle="tab" data-bs-target="#certificates" type="button" role="tab">
                 <i class="bi bi-award"></i> Certificates
             </button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="interests-tab" data-bs-toggle="tab" data-bs-target="#interests" type="button" role="tab">
+                <i class="bi bi-heart-fill"></i> Interests
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab">
+                <i class="bi bi-envelope"></i> Contact
+            </button>
+        </li>   
     </ul>
 
     <div class="tab-content container py-4" id="portfolioTabsContent">
@@ -229,6 +240,41 @@
                 </div>
             </div>
         </div>
+        <div class="tab-pane fade" id="interests" role="tabpanel">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="edu-card p-4 text-center">
+                        <h5>📸 Photography</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4 text-center">
+                        <h5>🎵 Music</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4 text-center">
+                        <h5>🎬 Editing</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4 text-center">
+                        <h5>📚 Tech Learning</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4 text-center">
+                        <h5>🌍 Exploring</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4 text-center">
+                        <h5>✈️ Traveling</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="tab-pane fade" id="contact" role="tabpanel">
             <div class="row justify-content-center">
