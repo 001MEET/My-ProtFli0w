@@ -1,0 +1,357 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home";
+
+}
+<style>
+    .fade-in-zoom {
+        animation: fadeZoomIn 1.2s ease-in-out forwards;
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    @@keyframes fadeZoomIn {
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .glow-bg {
+        background: linear-gradient(to right, #d0e7ff, #a6d0ff, #d0e7ff);
+        padding: 0.4rem 0.8rem;
+        border-radius: 12px;
+        display: inline-block;
+        box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+    } 
+    /* 🔵 Blur the whole page when modal is shown */
+    body.modal-blur-active #portfolioContent,
+    body.modal-blur-active .hero,
+    body.modal-blur-active footer {
+        filter: blur(8px);
+        transition: filter 0.3s ease-in-out;
+        pointer-events: none;
+    }
+</style>
+ 
+
+<div class="position-absolute top-0 end-0 p-3">
+    <button class="btn btn-outline-light" onclick="toggleDarkMode()">
+        <i class="bi bi-moon-stars-fill"></i>
+    </button>
+</div>
+
+<div class="hero text-center">
+    <img src="~/Profile.png" class="img-fluid rounded-circle mb-3 fade-in-zoom" alt="Meet Patel" width="200" />
+    <h1 class="fade-in-zoom">Meetkumar Kalpeshkumar Patel</h1>
+    <p class="lead fade-in-zoom">Software Developer</p>
+
+    <!-- Glowing Blue Bold Line -->
+    <p class="fw-bold text-primary placeholder-glow fade-in-zoom">
+        Building innovative solutions with code and AI.
+    </p>
+
+    <!-- Two-Line Description -->
+    <p class="fade-in-zoom">
+        Passionate about full-stack development and AI, I create projects like<br />
+        Inter-Prep-AI using React.js, .NET Core, and more. Explore my work!
+    </p>
+
+    <button class="btn btn-success mt-3 fade-in-zoom" onclick="showPortfolio()">Explore My Portfolio</button>
+</div>
+<div id="portfolioContent" style="display: none;">
+    <div class="position-absolute top-0 start-0 p-3">
+        <button class="btn btn-outline-secondary" onclick="backToHero()">
+            <i class="bi bi-arrow-left"></i> Back to Home
+        </button>
+    </div>
+    <ul class="nav nav-tabs justify-content-center mt-4" id="portfolioTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button" role="tab">
+                <i class="bi bi-person-circle"></i> About
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab">
+                <i class="bi bi-kanban"></i> Projects
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="skills-tab" data-bs-toggle="tab" data-bs-target="#skills" type="button" role="tab">
+                <i class="bi bi-tools"></i> Skills
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education" type="button" role="tab">
+                <i class="bi bi-book"></i> Education
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab">
+                <i class="bi bi-envelope"></i> Contact
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="certificates-tab" data-bs-toggle="tab" data-bs-target="#certificates" type="button" role="tab">
+                <i class="bi bi-award"></i> Certificates
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content container py-4" id="portfolioTabsContent">
+
+        <div class="tab-pane fade show active" id="about" role="tabpanel">
+            <div class="edu-card p-4">
+                <p>
+                    I am a Computer Science & Engineering student with 6 months of hands-on experience as a .NET Developer Intern at Webmyne Systems Pvt. Ltd.
+                    I contributed to real-world enterprise applications using ASP.NET Core MVC, Web API, and SQL Server.
+                    <br /><br />
+                    My expertise lies in building secure, scalable, and user-friendly web solutions. I’m passionate about software development and continuously strive to learn and grow by keeping up with the latest technologies and best practices in the .NET ecosystem.
+                </p>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="projects" role="tabpanel">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="edu-card p-4 h-100">
+                        <h5>Student ERP System</h5>
+                        <p>
+                            8th semester capstone project 2<br />
+                            A robust ERP system for educational institutions, developed during my internship at Webmyne Systems, enabling efficient student and course management.<br />
+                            <strong>Technologies:</strong> .NET Core MVC, MySQL, HTML, CSS, JavaScript
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4 h-100">
+                        <h5>IELTS Speaking AI Tool</h5>
+                        <p>
+                            7th semester capstone project 1<br />
+                            An AI-powered platform for IELTS speaking practice with mock speaking tests, personalized feedback, and a dynamic question bank using Gemini AI API.<br />
+                            <em>In development, coming soon.</em><br />
+                            <strong>Technologies:</strong> React.js, PostgreSQL, Gemini AI API, JavaScript, CSS
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4 h-100">
+                        <h5>Gaming E-Commerce</h5>
+                        <p>
+                            6th semester Engineering project<br />
+                            A front-end e-commerce website prototype designed for selling gaming accessories, featuring a clean layout, responsive design, and category-based product listing.<br />
+                            <strong>Technologies:</strong> HTML, CSS, JavaScript
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4 h-100">
+                        <h5>My Portfolio</h5>
+                        <p>
+                            Personal Web Project<br />
+                            A professional portfolio website showcasing my skills, experience, projects, and contact details in an interactive format with dark mode and responsive layout.<br />
+                            <strong>Technologies:</strong> ASP.NET Core MVC, Bootstrap, JavaScript, HTML, CSS
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="skills" role="tabpanel">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="edu-card p-4">
+                        <h5>Backend</h5>
+                        <p>C#, ASP.NET Core, Web API, LINQ, Entity Framework</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4">
+                        <h5>Frontend</h5>
+                        <p>HTML, CSS, JavaScript, Bootstrap</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="edu-card p-4">
+                        <h5>Database</h5>
+                        <p>SQL Server, MySQL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="certificates" role="tabpanel">
+            <div class="edu-card p-4">
+                <h5>Web Development Training Certificate</h5>
+                <p>
+                    Successfully completed an 8-week online training from Internshala, covering HTML, CSS, Bootstrap, DBMS, PHP, JavaScript, and React.
+                    Scored 100% in the final assessment and recognized as a top performer.
+                </p>
+                <p><strong>Date:</strong> 5th July 2023</p>
+                <a class="btn btn-outline-primary" href="~/Web Development Training - Certificate of Completion.pdf" target="_blank">
+                    View Certificate
+                </a>
+            </div>
+            <div class="edu-card p-4">
+                <h5>Foundational C# with Microsoft Certificate</h5>
+                <p>
+                    Completed the Foundational C# course from freeCodeCamp in collaboration with Microsoft. This covered essential C# programming concepts including variables, control structures, methods, and object-oriented programming.
+                </p>
+                <a class="btn btn-outline-primary" href="https://www.freecodecamp.org/certification/fcc69aaf55e-8abc-4622-8aad-cb1278f7cfda/foundational-c-sharp-with-microsoft" target="_blank">
+                    View Certificate
+                </a>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="education" role="tabpanel">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="edu-card p-4">
+                        <h4>🎓 College</h4>
+                        <p>
+                            <strong>B.Tech – Computer Science & Engineering</strong><br />
+                            KPGU – Krishna Education Campus, Vadodara<br />
+                            CGPA: 7.48 | Year: 2021–2025
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="edu-card p-4">
+                        <h4>🏫 School</h4>
+                        <p>
+                            <strong>12th (Science – Group A)</strong><br />
+                            Parth School, Vadodara
+                        </p>
+                        <p>
+                            <strong>10th (SSC)</strong><br />
+                            Shree Sardar Patel Madhyamik Shala, Vitoj, Halol
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="contact" role="tabpanel">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="edu-card p-4 text-center">
+                        <h5>Connect with me</h5>
+                        <div class="mt-4">
+                            <a href="mailto:meetkpatel04@gmail.com" class="text-light me-3" target="_blank">
+                                <i class="bi bi-envelope-fill fs-3"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/meetkumar-patel-061a1824b" class="text-light me-3" target="_blank">
+                                <i class="bi bi-linkedin fs-3"></i>
+                            </a>
+                            <a href="https://github.com/001MEET" class="text-light me-3" target="_blank">
+                                <i class="bi bi-github fs-3"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- End of .tab-content -->
+
+</div> <!-- End of #portfolioContent -->
+
+<footer class="text-center py-4">
+    <button class="btn btn-success" onclick="confirmDownload()">Download Resume</button>
+    <p>&copy; 2025 Meet Patel | <a href="https://www.linkedin.com/in/meetkumar-patel-061a1824b">LinkedIn</a></p>
+</footer>
+ 
+
+<!-- 👋 Welcome Modal with Black Background & Glow -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light text-center shadow-lg glowing-border">
+            <div class="modal-header border-0">
+                <h5 class="modal-title glowing-text" id="welcomeModalLabel">👋 Welcome</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body glowing-text">
+                Hello! I'm <strong>Meet Patel</strong> — Computer Science & Engineer <br />
+                Explore my Profile👨‍💻
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+                <button type="button" class="btn btn-outline-light glowing-border" data-bs-dismiss="modal">Let's Go 🚀</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 📄 Resume Download Confirmation Modal -->
+<div class="modal fade" id="resumeConfirmModal" tabindex="-1" aria-labelledby="resumeConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light text-center shadow-lg glowing-border">
+            <div class="modal-header border-0">
+                <h5 class="modal-title glowing-text" id="resumeConfirmModalLabel">Download Resume</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body glowing-text">
+                Do you want to download Meet Patel’s resume?
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+                <a href="/Resume.pdf" download class="btn btn-success glowing-border">Yes, Download</a>
+                <button type="button" class="btn btn-outline-light glowing-border" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDarkMode() {
+        const body = document.body;
+        const icon = document.querySelector('.bi');
+        body.classList.toggle("light-mode");
+        if (body.classList.contains("light-mode")) {
+            icon.classList.remove("bi-moon-stars-fill");
+            icon.classList.add("bi-brightness-high-fill");
+        } else {
+            icon.classList.remove("bi-brightness-high-fill");
+            icon.classList.add("bi-moon-stars-fill");
+        }
+    }
+
+    function showPortfolio() {
+        document.getElementById('portfolioContent').style.display = 'block';
+        document.querySelector('.hero').style.display = 'none';
+        window.scrollTo(0, 0); // optional: scroll to top
+    }
+
+    function backToHero() {
+        document.getElementById('portfolioContent').style.display = 'none';
+        document.querySelector('.hero').style.display = 'block';
+        window.scrollTo(0, 0); // optional: scroll to top
+    }
+          function confirmDownload() {
+        const modal = new bootstrap.Modal(document.getElementById('resumeConfirmModal'));
+        modal.show();
+    }
+
+       window.onload = function () {
+        const welcomeModalEl = document.getElementById('welcomeModal');
+        const welcomeModal = new bootstrap.Modal(welcomeModalEl);
+        welcomeModal.show();
+
+        // Typing animation
+        const text = "Hello! I'm Meet Patel — Computer Science & Engineering </br> Explore my Profile 👨‍💻";
+        const typedText = document.getElementById("typedText");
+        typedText.textContent = text;
+
+        // Apply blur to background
+        document.body.classList.add("modal-blur-active");
+
+        // Remove blur when modal hides (auto-close or button)
+        welcomeModalEl.addEventListener('hidden.bs.modal', () => {
+            document.body.classList.remove("modal-blur-active");
+        });
+
+        // Auto-close modal after 8 seconds
+        setTimeout(() => {
+            welcomeModal.hide();
+        }, 8000);
+    };
+
+
+</script>
+
