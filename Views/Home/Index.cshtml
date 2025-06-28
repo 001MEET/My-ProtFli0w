@@ -23,16 +23,15 @@
         border-radius: 12px;
         display: inline-block;
         box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
-    } 
-    /* 🔵 Blur the whole page when modal is shown */
-    body.modal-blur-active #portfolioContent,
-    body.modal-blur-active .hero,
-    body.modal-blur-active footer {
-        filter: blur(8px);
-        transition: filter 0.3s ease-in-out;
-        pointer-events: none;
     }
-
+    /* Blur the page when modal is shown */
+    body.modal-blur-active .hero,
+    body.modal-blur-active #portfolioContent,
+    body.modal-blur-active footer {
+        filter: blur(6px);
+        pointer-events: none;
+        transition: filter 0.3s ease-in-out;
+    }
     #interests p {
         color: white;
         text-shadow: 0 0 5px green, 0 0 10px green;
@@ -309,21 +308,20 @@
     <p>&copy; 2025 Meet Patel | <a href="https://www.linkedin.com/in/meetkumar-patel-061a1824b">LinkedIn</a></p>
 </footer>
  
-
-<!-- 👋 Welcome Modal with Black Background & Glow -->
+<!-- 👋 Welcome Modal -->
 <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark text-light text-center shadow-lg glowing-border">
+        <div class="modal-content bg-dark text-light text-center shadow-lg">
             <div class="modal-header border-0">
-                <h5 class="modal-title glowing-text" id="welcomeModalLabel">👋 Welcome</h5>
+                <h5 class="modal-title" id="welcomeModalLabel">👋 Welcome</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body glowing-text">
+            <div class="modal-body">
                 Hello! I'm <strong>Meet Patel</strong> — Computer Science & Engineer <br />
-                Explore my Profile👨‍💻
+                Explore my Portfolio 👨‍💻
             </div>
             <div class="modal-footer justify-content-center border-0">
-                <button type="button" class="btn btn-outline-light glowing-border" data-bs-dismiss="modal">Let's Go 🚀</button>
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Let's Go 🚀</button>
             </div>
         </div>
     </div>
@@ -377,20 +375,16 @@
         modal.show();
     }
 
-       window.onload = function () {
+    
+    window.addEventListener('load', function () {
         const welcomeModalEl = document.getElementById('welcomeModal');
         const welcomeModal = new bootstrap.Modal(welcomeModalEl);
         welcomeModal.show();
 
-        // Typing animation
-        const text = "Hello! I'm Meet Patel — Computer Science & Engineering </br> Explore my Profile 👨‍💻";
-        const typedText = document.getElementById("typedText");
-        typedText.textContent = text;
-
-        // Apply blur to background
+        // Blur background
         document.body.classList.add("modal-blur-active");
 
-        // Remove blur when modal hides (auto-close or button)
+        // Remove blur when modal closes
         welcomeModalEl.addEventListener('hidden.bs.modal', () => {
             document.body.classList.remove("modal-blur-active");
         });
@@ -398,9 +392,7 @@
         // Auto-close modal after 8 seconds
         setTimeout(() => {
             welcomeModal.hide();
-        }, 8000);
-    };
-
-
+        }, 5000);
+    });
 </script>
 
