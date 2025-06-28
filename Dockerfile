@@ -3,11 +3,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy only the .csproj file and restore dependencies
-COPY My_ProtFli0w/My_ProtFli0w.csproj ./My_ProtFli0w/
-RUN dotnet restore ./My_ProtFli0w/My_ProtFli0w.csproj
+COPY My_ProtFli0w/My_ProtFli0w.csproj My_ProtFli0w/
+RUN dotnet restore My_ProtFli0w/My_ProtFli0w.csproj
 
-# Copy everything and publish the app
-COPY . .
+# Copy the rest of the project files
+COPY My_ProtFli0w/ My_ProtFli0w/
 WORKDIR /src/My_ProtFli0w
 RUN dotnet publish -c Release -o /app/publish
 
