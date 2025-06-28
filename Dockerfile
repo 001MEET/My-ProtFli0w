@@ -7,7 +7,7 @@ COPY My_ProtFli0w.csproj ./
 RUN dotnet restore ./My_ProtFli0w.csproj
 
 # Copy everything and publish the app
-COPY /root-folder .
+COPY . .
 WORKDIR /src/My_ProtFli0w
 RUN dotnet publish -c Release -o /app/publish
 
@@ -18,6 +18,3 @@ COPY --from=build /app/publish .
 
 EXPOSE 80
 ENTRYPOINT ["dotnet", "My_ProtFli0w.dll"]
-
-# Build the Docker image
-# Command to build the image: docker build -t myapp .
